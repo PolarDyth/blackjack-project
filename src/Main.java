@@ -24,7 +24,7 @@ public class Main {
             System.out.println("\nDo you want to hit or stand? ");
             String input = scanner.nextLine();
 
-            if (input.toLowerCase().equals("hit")) {
+            if (input.equalsIgnoreCase("hit")) {
                 newGame.playerDraw();
             } else {
                 stand = true;
@@ -37,7 +37,7 @@ public class Main {
         newGame.endStep();
         System.out.println("Would you like to play again?");
         String playAgain = scanner.nextLine();
-        return playAgain.toLowerCase().equals("yes");
+        return playAgain.equalsIgnoreCase("yes");
     }
 
     private static List<Card> createDeck() {
@@ -49,7 +49,7 @@ public class Main {
                 deck.add(new Card(suitNum, value));
             }
         }
-
+        
         Collections.shuffle(deck);
         return deck;
     }

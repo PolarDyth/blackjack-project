@@ -13,20 +13,14 @@ public class Game {
         dealerHand = new ArrayList<>();
     }
 
-    public List<Card> getPlayerHand() {
-        return playerHand;
-    }
 
-    public void printPlayerHand() {
-        System.out.print("In your hand you currently have ");
+    private void printPlayerHand() {
+        System.out.print("In your hand you currently have");
         playerHand.forEach(s -> System.out.print(", " + s.getCardName()));
     }
 
-    public List<Card> getDealerHand() {
-        return dealerHand;
-    }
 
-    public void printDealerHand() {
+    private void printDealerHand() {
         System.out.print("The dealers hand is currently");
         dealerHand.forEach(s -> System.out.print(", " + s.getCardName()));
         System.out.println();
@@ -40,21 +34,21 @@ public class Game {
         printPlayerHand();
     }
 
-    public void dealerDraw() {
+    private void dealerDraw() {
 
         dealerHand.add(deck.get(0));
         deck.remove(0);
     }
 
-    public int calculatePlayer() {
+    private int calculateHand(List<Card> hand) {
         int total = 0;
         int highAceTotal = 0;
 
-        for (Card value : playerHand) {
+        for (Card value : hand) {
             total += value.getValue();
         }
         boolean hasAce = false;
-        for (Card card : playerHand) {
+        for (Card card : hand) {
             if (card.getValue() == 1) {
                 hasAce = true;
                 break;
@@ -68,27 +62,12 @@ public class Game {
         return hasAce ? (highAceTotal > 21 ? total : highAceTotal) : total;
     }
 
+    public int calculatePlayer() {
+        return calculateHand(playerHand);
+    }
+
     private int calculateDealer() {
-        int total = 0;
-        int highAceTotal = 0;
-
-        boolean hasAce = false;
-        for (Card card : dealerHand) {
-            if (card.getValue() == 1) {
-                hasAce = true;
-                break;
-            }
-        }
-
-        for (Card card : dealerHand) {
-            total += card.getValue();
-        }
-
-        if (hasAce) {
-            highAceTotal = total + 10;
-        }
-
-        return hasAce ? (highAceTotal > 21 ? total : highAceTotal) : total;
+        return calculateHand(dealerHand);
     }
 
     public void endStep() {
@@ -98,16 +77,18 @@ public class Game {
         }
 
         printDealerHand();
+        int calcPlayerHand = calculatePlayer();
+        int calcDealerHand = calculateDealer();
 
-        if (calculatePlayer() > 21) {
+        if (calcPlayerHand > 21) {
             System.out.println("You lose!");
-        } else if ((calculateDealer() > 21) && (calculatePlayer() < 21)) {
+        } else if ((calcDealerHand > 21) && (calcPlayerHand < 21)) {
             System.out.println("You win!");
-        } else if (calculateDealer() > calculatePlayer()) {
+        } else if (calcDealerHand > calcPlayerHand) {
             System.out.println("You lose!");
-        } else if (calculatePlayer() == calculateDealer()) {
+        } else if (calcPlayerHand == calcDealerHand) {
             System.out.println("It's a tie!");
-        } else if (calculatePlayer() > calculateDealer()) {
+        } else {
             System.out.println("You win!");
         }
     }

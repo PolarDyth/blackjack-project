@@ -14,9 +14,6 @@ public class Card {
         }
     }
 
-    private int getSuit() {
-        return suit;
-    }
 
     public int getValue() {
         return trueValue;
