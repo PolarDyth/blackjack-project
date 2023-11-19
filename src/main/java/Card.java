@@ -1,3 +1,5 @@
+
+
 public class Card {
 
     private final int suit;
@@ -17,6 +19,10 @@ public class Card {
 
     public int getValue() {
         return trueValue;
+    }
+
+    public int getSuit() {
+        return suit;
     }
 
     public String getCardName() {
