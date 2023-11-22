@@ -24,11 +24,18 @@ public class Main {
             System.out.println("\nDo you want to hit or stand? ");
             String input = scanner.nextLine();
 
+//            while (!(input.equalsIgnoreCase("hit") || input.equalsIgnoreCase("stand"))) {
+//                System.out.println("Please enter 'hit' or 'stand'");
+//                input = scanner.nextLine();
+//            }
+
             if (input.equalsIgnoreCase("hit")) {
                 newGame.playerDraw();
-            } else {
+            } else if (input.equalsIgnoreCase("stand")) {
                 stand = true;
                 break;
+            } else {
+
             }
         }
         if (!stand) {
@@ -40,16 +47,16 @@ public class Main {
         return playAgain.equalsIgnoreCase("yes");
     }
 
-    private static List<Card> createDeck() {
+    public static List<Card> createDeck() {
 
         List<Card> deck = new ArrayList<>();
 
-        for (int suitNum = 0; suitNum < 3; suitNum++) {
+        for (int suitNum = 0; suitNum < 4; suitNum++) {
             for (int value = 1; value < 14; value++) {
                 deck.add(new Card(suitNum, value));
             }
         }
-        
+
         Collections.shuffle(deck);
         return deck;
     }

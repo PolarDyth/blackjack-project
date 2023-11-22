@@ -4,3 +4,7 @@
 out/
 .idea/
 .idea_modules/
+.target/
+.test/
+.resources/
+
