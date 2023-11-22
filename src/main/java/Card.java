@@ -1,5 +1,3 @@
-
-
 public class Card {
 
     private final int suit;
@@ -25,16 +23,23 @@ public class Card {
         return suit;
     }
 
-    public String getCardName() {
+    public Suit getSuitName() {
 
-        String cardName;
+        Suit suitName;
         switch (suit) {
-            case 0 -> cardName = "Diamonds";
-            case 1 -> cardName = "Hearts";
-            case 2 -> cardName = "Spades";
-            case 3 -> cardName = "Clubs";
-            default -> cardName = "Error value is " + suit;
+            case 0 -> suitName = Suit.Diamonds;
+            case 1 -> suitName = Suit.Hearts;
+            case 2 -> suitName = Suit.Spades;
+            case 3 -> suitName = Suit.Clubs;
+            default -> suitName = Suit.Error;
         }
+
+        return suitName;
+    }
+
+    public String getName() {
+
+        String cardName = String.valueOf(getSuitName());
 
         if (value < 11 && value > 1) {
             cardName = ("The " + value + " of " + cardName);
@@ -44,7 +49,7 @@ public class Card {
                 case 11 -> cardName = ("The Jack of " + cardName);
                 case 12 -> cardName = ("The Queen of " + cardName);
                 case 13 -> cardName = ("The King of " + cardName);
-                default -> cardName = "Error value is " + suit;
+                default -> cardName = "Error value is " + value;
             }
         }
 

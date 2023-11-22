@@ -6,16 +6,10 @@ import java.util.Scanner;
 
 public class Main {
     public static void main(String[] args) {
-//        boolean play = true;
-//
-//        while (play) {
-//            play = playGame();
-//        }
+        boolean play = true;
 
-        Game testGame = new Game(createDeck());
-
-        for (int i = 0; i < 54; i++) {
-            testGame.playerDraw();
+        while (play) {
+            play = playGame();
         }
     }
 

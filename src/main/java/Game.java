@@ -16,20 +16,20 @@ public class Game {
 
     private void printPlayerHand() {
         System.out.print("In your hand you currently have");
-        playerHand.forEach(s -> System.out.print(", " + s.getCardName()));
+        playerHand.forEach(s -> System.out.print(", " + s.getName()));
     }
 
 
     private void printDealerHand() {
         System.out.print("The dealers hand is currently");
-        dealerHand.forEach(s -> System.out.print(", " + s.getCardName()));
+        dealerHand.forEach(s -> System.out.print(", " + s.getName()));
         System.out.println();
     }
 
     public void playerDraw() {
 
         playerHand.add(deck.get(0));
-        System.out.println("You drew " + deck.get(0).getCardName());
+        System.out.println("You drew " + deck.get(0).getName());
         deck.remove(0);
         printPlayerHand();
     }

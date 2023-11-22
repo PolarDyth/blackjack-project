@@ -2,6 +2,9 @@ import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
+import java.util.ArrayList;
+import java.util.List;
+
 public class UnitTests {
 
     @Test
@@ -51,5 +54,24 @@ public class UnitTests {
                 testGame.playerDraw();
             }
         });
+    }
+
+    @Test
+    @DisplayName("Check getSuitName in cards class")
+    public void checkSuitName() {
+        List<Card> testDeck = new ArrayList<>();
+        testDeck.add(new Card(0, 5));
+        testDeck.add(new Card(1, 5));
+        testDeck.add(new Card(2, 5));
+        testDeck.add(new Card(3, 5));
+        testDeck.add(new Card(4, 5));
+        testDeck.add(new Card(-1, 5));
+
+        Assertions.assertEquals(Suit.Diamonds, testDeck.get(0).getSuitName());
+        Assertions.assertEquals(Suit.Hearts, testDeck.get(1).getSuitName());
+        Assertions.assertEquals(Suit.Spades, testDeck.get(2).getSuitName());
+        Assertions.assertEquals(Suit.Clubs, testDeck.get(3).getSuitName());
+        Assertions.assertEquals(Suit.Error, testDeck.get(4).getSuitName());
+        Assertions.assertEquals(Suit.Error, testDeck.get(5).getSuitName());
     }
 }
