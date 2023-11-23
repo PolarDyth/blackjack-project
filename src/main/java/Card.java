@@ -1,58 +1,28 @@
 public class Card {
 
-    private final int suit;
-    private final int value;
-    private final int trueValue;
+    private final CardValue value;
+    private final CardSuit suit;
 
-    public Card(int suit, int value) {
+    public Card(CardSuit suit, CardValue value) {
         this.suit = suit;
         this.value = value;
-        if (value > 10) {
-            trueValue = 10;
-        } else {
-            trueValue = value;
-        }
-    }
-
-
-    public int getValue() {
-        return trueValue;
-    }
-
-    public int getSuit() {
-        return suit;
-    }
-
-    public Suit getSuitName() {
-
-        Suit suitName;
-        switch (suit) {
-            case 0 -> suitName = Suit.Diamonds;
-            case 1 -> suitName = Suit.Hearts;
-            case 2 -> suitName = Suit.Spades;
-            case 3 -> suitName = Suit.Clubs;
-            default -> suitName = Suit.Error;
-        }
-
-        return suitName;
     }
 
     public String getName() {
+        return "The " + value + "of " + suit;
+    }
 
-        String cardName = String.valueOf(getSuitName());
-
-        if (value < 11 && value > 1) {
-            cardName = ("The " + value + " of " + cardName);
-        } else {
-            switch (value) {
-                case 1 -> cardName = ("The Ace of " + cardName);
-                case 11 -> cardName = ("The Jack of " + cardName);
-                case 12 -> cardName = ("The Queen of " + cardName);
-                case 13 -> cardName = ("The King of " + cardName);
-                default -> cardName = "Error value is " + value;
-            }
-        }
-
-        return cardName;
+    public int getValue() {
+        return switch (value) {
+            case TWO -> 2;
+            case THREE -> 3;
+            case FOUR -> 4;
+            case FIVE -> 5;
+            case SIX -> 6;
+            case SEVEN -> 7;
+            case EIGHT -> 8;
+            case NINE -> 9;
+            case TEN, JACK, QUEEN, KING, ACE -> 10;
+        };
     }
 }
