@@ -1,3 +1,5 @@
+package PlayingCard;
+
 public enum CardValue {
     TWO,
     THREE,

@@ -1,3 +1,5 @@
+package PlayingCard;
+
 public class Card {
 
     private final CardValue value;
