@@ -4,7 +4,6 @@
 out/
 .idea/
 .idea_modules/
-.target/
-.test/
+target/*
 .resources/
 
