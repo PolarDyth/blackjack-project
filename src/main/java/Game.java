@@ -47,11 +47,11 @@ public class Game {
         int highAceTotal = 0;
 
         for (Card value : hand) {
-            total += value.getTrueValue();
+            total += value.getValue();
         }
         boolean hasAce = false;
         for (Card card : hand) {
-            if (card.getTrueValue() == 1) {
+            if (card.getValue() == 1) {
                 hasAce = true;
                 break;
             }

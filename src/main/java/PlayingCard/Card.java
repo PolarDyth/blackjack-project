@@ -16,15 +16,8 @@ public class Card {
         return "The " + value + " of " + suit;
     }
 
-    public CardValue getValue() {
-        return value;
-    }
 
-    public CardSuit getSuit() {
-        return suit;
-    }
-
-    public int getTrueValue() {
+    public int getValue() {
         return switch (value) {
             case TWO -> 2;
             case THREE -> 3;
