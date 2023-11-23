@@ -1,3 +1,5 @@
+import PlayingCard.Card;
+
 import java.util.ArrayList;
 import java.util.List;
 
@@ -45,11 +47,11 @@ public class Game {
         int highAceTotal = 0;
 
         for (Card value : hand) {
-            total += value.getValue();
+            total += value.getTrueValue();
         }
         boolean hasAce = false;
         for (Card card : hand) {
-            if (card.getValue() == 1) {
+            if (card.getTrueValue() == 1) {
                 hasAce = true;
                 break;
             }

@@ -1,3 +1,7 @@
+import PlayingCard.Card;
+import PlayingCard.CardSuit;
+import PlayingCard.CardValue;
+
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
@@ -51,9 +55,9 @@ public class Main {
 
         List<Card> deck = new ArrayList<>();
 
-        for (int suitNum = 0; suitNum < 4; suitNum++) {
-            for (int value = 1; value < 14; value++) {
-                deck.add(new Card(suitNum, value));
+        for (CardSuit suit : CardSuit.values()) {
+            for (CardValue value : CardValue.values()) {
+                deck.add(new Card(suit, value));
             }
         }
 

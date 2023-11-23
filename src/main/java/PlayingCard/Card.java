@@ -10,11 +10,21 @@ public class Card {
         this.value = value;
     }
 
+
+
     public String getName() {
-        return "The " + value + "of " + suit;
+        return "The " + value + " of " + suit;
     }
 
-    public int getValue() {
+    public CardValue getValue() {
+        return value;
+    }
+
+    public CardSuit getSuit() {
+        return suit;
+    }
+
+    public int getTrueValue() {
         return switch (value) {
             case TWO -> 2;
             case THREE -> 3;
