@@ -13,12 +13,13 @@ public class DeckUnitTests {
     public void CheckDeckCreatesUniqueCards() {
         Deck testDeck = new Deck();
 
+        int counter = 0;
         for (CardSuit suit : CardSuit.values()) {
             for (CardValue value : CardValue.values()) {
-                for (int i = 0; i < 52; i++) {
-                    var expectedName = "The " + value.name() + " of " + suit.name();
-                    Assertions.assertEquals(expectedName, testDeck.getDeck().get(i).getName());
-                }
+                var expectedName = "The " + value.name() + " of " + suit.name();
+                Assertions.assertEquals(expectedName, testDeck.getDeck().get(counter).getName());
+
+                counter++;
             }
         }
     }
@@ -30,7 +31,7 @@ public class DeckUnitTests {
         var topDeck = testDeck.getDeck().get(0);
         var removedCard = testDeck.drawCard();
 
-        Assertions.assertEquals(50, testDeck.getDeck().size());
+        Assertions.assertEquals(51, testDeck.getDeck().size());
         Assertions.assertEquals(topDeck, removedCard);
     }
 
